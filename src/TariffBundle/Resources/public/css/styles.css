@@ -1,0 +1,322 @@
+/** Custom and override styles for Czr Task app */
+#header-nav{
+    border-radius: 0
+}
+#task_priority{
+    display: flex;
+    flex-flow: row nowrap
+}
+#task_priority > div.radio {
+    /*width: 60px;*/
+    /*height: 40px;*/
+    margin: 0;
+    /*font-weight: bold;*/
+    /*font-size: 1em;*/
+    /*text-align: center;*/
+}
+
+#task_priority > .radio input:before,
+#task_priority .bootstrap-radio:after{
+    font-family: "font-awesome-custom";
+    font-style: normal;
+    font-weight: normal;
+    speak: none;
+
+    display: inline-block;
+    text-decoration: inherit;
+    width: 1em;
+    margin-right: .2em;
+    text-align: center;
+    /* opacity: .8; */
+
+    /* For safety - reset parent styles, that can break glyph codes*/
+    font-variant: normal;
+    text-transform: none;
+
+    /* fix buttons height, for twitter bootstrap */
+    line-height: 1em;
+
+    /* Animation center compensation - margins should be symmetric */
+    /* remove if not needed */
+    margin-left: 1em;
+
+    /* you can be more comfortable with increased icons size */
+    font-size: 120%; 
+
+    /* Font smoothing. That was taken from TWBS */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    /* Uncomment for 3D effect */
+    /*text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);*/ 
+}
+.task-priority > [class^="task-priority-"]{
+    font-size: 100%;
+    opacity: .7
+}
+#task_priority .bootstrap-radio:after{
+    font-size: 100%;
+}
+/** 1st rule - default controls by browser, 
+    2st - bootstrap radio, 
+    3st - icons for template task_simple **/
+/*plane empty*/
+#task_priority > .radio:nth-of-type(1) input:before,
+#task_priority .radio:nth-of-type(1) .bootstrap-radio:after,
+.task-priority > .task-priority-0:before{ 
+    content: '\e81a'; 
+} 
+/*plane*/
+#task_priority > .radio:nth-of-type(2) input:before,
+#task_priority .radio:nth-of-type(2) .bootstrap-radio:after,
+.task-priority > .task-priority-1:before{ 
+    content: '\e820'; 
+} 
+/*rocket*/
+#task_priority > .radio:nth-of-type(3) input:before,
+#task_priority .radio:nth-of-type(3) .bootstrap-radio:after,
+.task-priority > .task-priority-2:before{ 
+    content: '\e807'; 
+} 
+/*flash*/
+#task_priority > .radio:nth-of-type(4) input:before,
+#task_priority .radio:nth-of-type(4) .bootstrap-radio:after,
+.task-priority > .task-priority-3:before{ 
+    color:tomato;
+    content: '\e81f'; 
+} 
+/*custom checkbox*/
+/*.checkbox input[type="checkbox"]:checked + label::after,
+.checkbox input[type="radio"]:checked + label::after {
+  font-family: "font-awesome-custom";
+  content: "\e80d";
+}*/
+.radio label, .checkbox label {
+    padding-left: 0;
+}
+.button-checkbox .btn-link,
+.button-radio .btn-link{
+    color:inherit
+}
+.button-checkbox [class*="icon-"]:before,
+.button-radio [class*="icon-"]:before{
+    font-size: 120%;
+}
+.bootstrap-checkbox [class*="icon-"]{
+    opacity: .8
+}
+.bootstrap-checkbox:hover [class*="icon-"]{
+    opacity: 1
+}
+#task_priority .bootstrap-radio [class*="icon-"]{
+    opacity: .6
+}
+#task_priority .bootstrap-radio:hover [class*="icon-"]{
+    opacity: 1
+}
+.bootstrap-radio > .btn.btn-link{
+    padding: 0 0 0 15px
+}
+.task-description .bootstrap-radio > .btn.btn-link{
+    padding: 0 
+}
+/*Формы*/
+fieldset hr{
+    border-top:1px solid #dce4ec
+}
+.flex-centered .row-fluid{
+    display: flex;
+}
+.flex-centered .row-fluid .span4{
+    display: flex;
+    align-items:center
+}
+.flex-centered .row-fluid .form-group{
+    margin: auto;
+}
+
+/*UI для периодов*/
+.cron-pull-ct{
+    display: flex!important;   
+}
+.cron-pull-ct .checkbox{
+    float:left;
+    margin: 10px auto 0;
+    text-transform: capitalize;
+    text-align: center;
+}
+.cron-pull-ct label{
+    font-weight: bold;
+    position: relative;
+    padding: 0
+}
+.cron-pull-ct .checkbox input{
+    margin: -10px auto 0;
+    width:100%;
+    float: none;
+    display: block;
+    opacity: .4
+}
+.cron-pull-ct .checkbox input:checked{
+    opacity: 1
+}
+.cron-pull-ct .bootstrap-checkbox > button.btn.btn-large{
+    padding: 0
+}
+#cron-date-ct{
+    display: block!important;   
+}
+.cron-pull-ct .checkbox{
+    /*display: flex;*/
+    /*align-items:center;*/
+}
+#task_cron_weekday, #task_cron_month, #task_cron_date{
+    width: 100%
+}
+
+/*Подсветка дней*/
+#cron-weekday-ct .checkbox {
+    width: 14%;
+}
+#cron-weekday-ct .checkbox:nth-of-type(6) label,
+#cron-weekday-ct .checkbox:nth-of-type(7) label{
+    color:tomato
+}
+/*Подсветка месяцев*/
+#cron-month-ct .checkbox {
+    width: 8.2%;
+}
+#cron-month-ct label{
+    font-size: 12px
+}
+#cron-month-ct .checkbox:nth-of-type(1) label,
+#cron-month-ct .checkbox:nth-of-type(2) label,
+#cron-month-ct .checkbox:nth-of-type(12) label{
+    color:deepskyblue
+}
+#cron-month-ct .checkbox:nth-of-type(3) label,
+#cron-month-ct .checkbox:nth-of-type(4) label,
+#cron-month-ct .checkbox:nth-of-type(5) label{
+    color:tomato
+}
+#cron-month-ct .checkbox:nth-of-type(6) label,
+#cron-month-ct .checkbox:nth-of-type(7) label,
+#cron-month-ct .checkbox:nth-of-type(8) label{
+    color:lightgreen
+}
+#cron-month-ct .checkbox:nth-of-type(9) label,
+#cron-month-ct .checkbox:nth-of-type(10) label,
+#cron-month-ct .checkbox:nth-of-type(11) label{
+    color:orange
+}
+
+#cron-date-ct .row-fluid .checkbox{
+    width:5%;
+    margin: 10px 0 0
+}
+#cron-date-ct .checkbox{
+    width:5%;
+    margin: 10px 0 0
+}
+#cron-date-ct label{
+    font-size: 12px;
+    width:100%
+}
+#cron-date-ct .checkbox:nth-of-type(11),
+#cron-date-ct .checkbox:nth-of-type(21){
+    clear: left
+}
+
+
+.disabled .checkbox label{
+    color:#bbb!important;
+}
+.cron-pull-ct label,
+.cron-anti-nodate *{
+    transition: all .2s ease
+}
+
+#cron-date-ct.hidden{
+    display: none!important
+}
+
+.hidden-v{
+    visibility: hidden
+}
+.cron-ui-group{
+    margin:0;
+}
+.cron-divider-title{
+    color:#bbb;
+    text-align: center
+}
+#collapse1 .panel-body > .row-fluid{
+    padding: 15px 15px;
+}
+#collapse1 .panel-body > .row-fluid:nth-of-type(2n){
+    background: #dce4ec;
+    background: rgba(236,240,241,0.5)
+}
+#collapse1 > .panel-body{
+    padding: 0;
+}
+.cron-anti-nodate.unactive{
+    opacity: .5
+}
+#cron-readable{
+    font-weight: bold;
+    font-size: small;
+}
+.panel-body .row-fluid [class*="span"]:first-child{
+    margin:0
+}
+.bootstrap-select .bs-searchbox input{
+    height: 35px;
+    padding: 6px 9px;
+    font-size: 13px;
+    line-height: 1.5;
+    border-radius: 3px;
+}
+/* Списки задач */
+.inline-label.badge{
+    background: none;
+    color: #999;
+    font-weight: normal;
+}
+.task-single{
+    border-bottom: 1px solid #eee;
+    margin-bottom: 10px
+}
+.task-single:last-child{
+    border-bottom: none
+}
+.task-single .task-category{
+    font-size: 13px
+}
+.task-single .task-description{
+    font-size: 15px
+}
+.task-single .task-closest{
+    font-size: 12px
+}
+.muted {
+    color: #999;
+}
+.task-icons-ct, .task-icons-ct .btn-link,
+.category-single .btn-link{
+    color: #bbb;
+}
+.task-icons-ct .btn-link:hover,
+.category-single .btn-link:hover{
+    color: tomato;
+}
+.task-icons-ct .task-period{
+    font-size: 80%;
+    line-height: 21px;
+    text-align: right
+}
+.task-icons-ct .task-priority{
+}
+#remove-btn{
+    margin: 0 0 0 5px;
+}

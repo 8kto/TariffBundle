@@ -1,0 +1,56 @@
+{% extends 'TariffBundle:Default:layout_inner.html.twig' %}
+{% block title %}Главная{% endblock %}
+{#{% block pagetitle %}{{ "now"|localizeddate('full', 'none', 'ru', timezone) }}{% endblock %}#}
+
+{% 
+    set crumbs = [
+        {title: 'Главная', current : true}, 
+    ]
+%}
+
+{#================CONTENT=====================================================#}
+{% block body %}
+
+    <div class="row-fluid">
+        <div class="span7">
+            <div class="row-fluid tasks-block">
+                <h3>Сегодня</h3>
+
+                {#                {% for task in tasksToday %}
+                                    {{ include('TariffBundle:Default:task.html.twig', { 'task': task, 'show_date' : false, 'show_menu': true }) }}
+                                {% endfor %}
+                
+                                {% if not tasksToday %}
+                                    {{ include('TariffBundle:Default:block_task_empty.html.twig') }}
+                                {% endif %}#}
+            </div>
+        
+        </div>
+        <div class="span5">
+            <div class="row-fluid">
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">Новости</div>
+                    <div class="panel-body">
+
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+<div class="hidden">
+    {#        {{ include('TariffBundle:Default:block_tasks_done.html.twig') }}#}
+</div>
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script src="{{ asset('bundles/tariff/js/list-tasks-wrapper.js') }}"></script>
+{% endblock %}
+
+{% endblock %}

@@ -4,14 +4,23 @@ namespace TariffBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
-class TariffController extends Controller
-{
+class TariffController extends Controller {
+
     /**
-     * @Route("/")
+     * @Route("/", name="index")
+     * @Template("TariffBundle:Default:page_index.html.twig")
      */
-    public function indexAction()
-    {
-        return $this->render('TariffBundle:Default:index.html.twig');
+    public function indexAction() {
+//        $user     = $this->getUser();
+//        $timezone = $user->getTimezone();
+//        date_default_timezone_set($timezone);
+//
+//        return [
+//            'timezone' => $timezone,
+//        ];
+        return [];
     }
+
 }

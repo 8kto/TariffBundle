@@ -1,0 +1,112 @@
+{% extends 'TariffBundle:Default:layout_bootstrap_fluid.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('bundles/tariff/external/montrezorro/bootstrap-checkbox/css/bootstrap-checkbox.css') }}" rel="stylesheet" />
+    <link href="{{ asset('bundles/tariff/external/montrezorro/bootstrap-radio/css/bootstrap-radio.css') }}" rel="stylesheet" />
+    <link href="{{ asset('bundles/tariff/external/node_modules/bootstrap-select/dist/css/bootstrap-select.min.css') }}" rel="stylesheet" />
+{% endblock %}
+
+{#================CONTENT=====================================================#}
+{# Навигация в шапке #}
+
+{# black magic macro #}
+{% macro is_current_route(route) %} 
+    {%- if app.request.get('_route') == route -%} 
+    {{- 'active' -}} 
+    {%- endif -%} 
+{% endmacro %}  
+{% import _self as tpl %}
+
+{% block header_nav %}
+    <nav class="navbar navbar-default" id="header-nav">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="{{ path("index") }}">{{ webapp_title }}</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+{#                    <li class="{{- tpl.is_current_route('tasks_done') -}}">
+                        <a href="{{ path("tasks_done") }}">Выполненные</a>
+                    </li>
+                    <li class="{{- tpl.is_current_route('tasks_closed') -}}">
+                        <a href="{{ path("tasks_closed") }}">Неактивные</a>
+                    </li>
+                    <li class="{{- tpl.is_current_route('add_task') -}}">
+                        <a href="{{ path("add_task") }}"><i class="icon-plus"></i></a>
+                    </li>#}
+                </ul>
+
+                <form class="navbar-form navbar-left" role="search">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Быстрый поиск">
+                    </div>
+                    <button type="submit" class="btn btn-success">GO</button>
+                </form>
+
+                <ul class="nav navbar-nav navbar-right">
+                    {#{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                        <li><a href="{{ path("fos_user_profile_show") }}"><strong>{{ app.user.username }}</strong></a></li>
+                                {% endif %}
+                    <li><a href="{{ logout_path() }}">Выйти</a></li>#}
+                </ul>
+            </div>
+        </div>
+    </nav>
+{% endblock %}
+{# /Навигация в шапке #}
+
+{# Навигация #}
+{% block sidebar_nav %}
+    <ul class="list-group">
+        <li class="list-group-item">
+            <span class="badge" title="Сегодня">
+                        
+                    <i class="icon icon-coffee"></i>
+r
+            </span>    
+            <a href="{{ path("index") }}">Задачи</a>
+        </li>
+        <li class="list-group-item">
+            <a href="#">Календарь</a>
+        </li>
+    </ul>
+
+{#    <h4><a href="{{ path("list_categories") }}">Категории</a></h4>#}
+    <div class="list-group">
+
+        {#{% for category in app.user.categories %}
+            <a href="#" class="list-group-item">{{ category.name }}</a>
+        {% endfor %}#}
+
+
+    </div>
+{% endblock %}
+{# /Навигация #}
+
+{# Хлебные крошки #}
+{% block breadcrumbs %}
+    {% if crumbs is defined %}
+        <ul class="breadcrumb">
+            {% for item in crumbs %}
+                <li class="{{ item.current is defined? 'active' : '' }}}">
+                    {% if item.current is not defined %}
+                        <a href="{{ path(item.path) }}">{{ item.title }}</a>
+                    {% else %}
+                        {{ item.title }}
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>    
+    {% endif %}
+{% endblock %}
+{# /Хлебные крошки #}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/tariff/external/montrezorro/bootstrap-checkbox/js/bootstrap-checkbox.js') }}"></script>   
+    <script src="{{ asset('bundles/tariff/external/montrezorro/bootstrap-radio/js/bootstrap-radio.js') }}"></script>   
+    <script src="{{ asset('bundles/tariff/external/node_modules/bootstrap-select/dist/js/bootstrap-select.min.js') }}"></script>   
+    <script src="{{ asset('bundles/tariff/js/wrapper.js') }}"></script>   
+{% endblock %}

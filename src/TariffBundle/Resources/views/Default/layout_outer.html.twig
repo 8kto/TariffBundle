@@ -1,0 +1,22 @@
+{% extends 'TariffBundle:Default:layout_bootstrap_fluid.html.twig' %}
+
+{#================CONTENT=====================================================#}
+{# Навигация в шапке #}
+{% block header_nav %}
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="{{ path("index") }}"><em>{{ webapp_title }}</em></a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="{{ path("fos_user_security_login") }}">Войти</a></li>
+                    <li><a href="{{ path("fos_user_registration_register") }}">Регистрация</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+{% endblock %}
+{# /Навигация в шапке #}
