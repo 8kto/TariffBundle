@@ -1,0 +1,4 @@
+tariff:
+    resource: "@TariffBundle/Controller/"
+    type:     annotation
+    prefix:   /
