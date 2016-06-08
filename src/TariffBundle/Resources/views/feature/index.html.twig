@@ -1,0 +1,48 @@
+{% extends 'TariffBundle:Default:layout_inner.html.twig' %}
+{% block title %}Возможности{% endblock %}
+{% block pagetitle %}Возможности{% endblock %}
+
+{% 
+    set crumbs = [
+        {title: 'Список', current: true}, 
+    ]
+%}
+
+{#================CONTENT=====================================================#}
+
+{% block body %}
+
+    <div class="well">
+        Абстрактная сущность для описания какого-либо <em>Свойства хостинга</em>.<br>
+        Например: <strong>Домен в подарок, Место на диске, Кол-во почтовых ящиков</strong>.
+    </div>
+
+    <div class="btn-group">
+        <a class="btn btn-info" href="{{ path('feature_new') }}">Добавить</a>
+    </div>
+    <table class="table table-striped table-hover ">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Название</th>
+                <th>Описание</th>
+                <th>Действия</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for feature in features %}
+                <tr>
+                    <td><a href="{{ path('feature_show', { 'id': feature.id }) }}">{{ feature.id }}</a></td>
+                    <td>{{ feature.name }}</td>
+                    <td>{{ feature.description }}</td>
+                    <td>
+                        <a class="btn btn-xs btn-info" href="{{ path('feature_show', { 'id': feature.id }) }}">Подробно</a>
+                        <a class="btn btn-xs btn-info" href="{{ path('feature_edit', { 'id': feature.id }) }}">Изменить</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'TariffBundle:Default:layout_inner.html.twig' %}
+{% block title %}Редактировать Возможность{% endblock %}
+{% block pagetitle %}Редактировать Возможность{% endblock %}
+
+
+{% 
+    set crumbs = [
+        {title: 'Список', path: 'feature_index'}, 
+        {title: 'Редактировать', current : true}
+    ]
+%}
+
+{% block body %}
+
+    {{ form_start(edit_form) }}
+    {{ form_widget(edit_form) }}
+    <div class="btn-group">
+        <input type="submit" value="Сохранить" class="btn btn-info" />
+    </div>
+    {{ form_end(edit_form) }}
+
+    {{ form_start(delete_form) }}
+    <div class="btn-group">
+        <input type="submit" value="Удалить" class="btn btn-danger">
+    </div>
+    {{ form_end(delete_form) }}
+{% endblock %}
