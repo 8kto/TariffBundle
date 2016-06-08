@@ -53,6 +53,7 @@ class FeatureController extends Controller {
             $em->persist($feature);
             $em->flush();
 
+            $this->addFlash('success', 'Успешно сохранено');
             return $this->redirectToRoute('feature_show', array('id' => $feature->getId()));
         }
 
@@ -95,6 +96,7 @@ class FeatureController extends Controller {
             $em->persist($feature);
             $em->flush();
 
+            $this->addFlash('success', 'Успешно сохранено');
             return $this->redirectToRoute('feature_index');
         }
 
@@ -118,6 +120,8 @@ class FeatureController extends Controller {
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($feature);
+            
+            $this->addFlash('success', 'Успешно удалено');
             $em->flush();
         }
 

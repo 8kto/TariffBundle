@@ -1,0 +1,52 @@
+{% extends 'TariffBundle:Default:layout_inner.html.twig' %}
+{% block title %}Тарифы{% endblock %}
+{% block pagetitle %}Тарифы{% endblock %}
+
+{% 
+    set crumbs = [
+        {title: 'Список', path: 'tariff_index'}, 
+        {title: 'Подробно', current : true}
+    ]
+%}
+
+{#================CONTENT=====================================================#}
+
+{% block body %}
+
+    <table class="table table-striped table-hover ">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ tariff.id }}</td>
+            </tr>
+            <tr>
+                <th>Название</th>
+                <td>{{ tariff.name }}</td>
+            </tr>
+            <tr>
+                <th>Активный</th>
+                <td>{% if tariff.active %}Да{% else %}Нет{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Цена</th>
+                <td>{{ tariff.price }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>Возможности</h3>
+    <table class="table table-striped table-hover features-list">
+        {% for feature in tariff.features %}
+            <tr><td>{{ feature }}</td></tr>
+        {% endfor %} 
+    </table>
+
+    <div class="btn-group">
+        <a class="btn btn-info" href="{{ path('tariff_edit', { 'id': tariff.id }) }}">Изменить</a>
+
+        {{ form_start(delete_form) }}
+        <input type="submit" value="Удалить" class="btn btn-danger">
+        {{ form_end(delete_form) }}
+    </div>
+
+{% endblock %}

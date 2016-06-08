@@ -39,7 +39,7 @@ class FeatureConcrete {
     private $value;
 
     /**
-     * @ORM\OneToOne(targetEntity="Tariff")
+     * @ORM\ManyToOne(targetEntity="Tariff", inversedBy="features")
      * @var Tariff
      */
     private $tariff;
@@ -95,15 +95,13 @@ class FeatureConcrete {
         return $this->feature;
     }
 
-
     /**
      * Set tariff
      *
      * @param \TariffBundle\Entity\Tariff $tariff
      * @return FeatureConcrete
      */
-    public function setTariff(\TariffBundle\Entity\Tariff $tariff = null)
-    {
+    public function setTariff(\TariffBundle\Entity\Tariff $tariff = null) {
         $this->tariff = $tariff;
 
         return $this;
@@ -114,8 +112,12 @@ class FeatureConcrete {
      *
      * @return \TariffBundle\Entity\Tariff 
      */
-    public function getTariff()
-    {
+    public function getTariff() {
         return $this->tariff;
     }
+
+    public function __toString() {
+        return $this->feature->getName() . " = " . $this->value;
+    }
+
 }

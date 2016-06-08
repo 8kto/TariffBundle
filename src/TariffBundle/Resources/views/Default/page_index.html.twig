@@ -24,7 +24,7 @@
                                     {{ include('TariffBundle:Default:block_task_empty.html.twig') }}
                                 {% endif %}#}
             </div>
-        
+
         </div>
         <div class="span5">
             <div class="row-fluid">
@@ -47,10 +47,10 @@
     {#        {{ include('TariffBundle:Default:block_tasks_done.html.twig') }}#}
 </div>
 
+{% endblock %}
+
 {% block javascripts %}
     {{ parent() }}
 
     <script src="{{ asset('bundles/tariff/js/list-tasks-wrapper.js') }}"></script>
-{% endblock %}
-
 {% endblock %}

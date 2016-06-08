@@ -36,14 +36,12 @@ class Feature {
      */
     private $description;
 
-
     /**
      * Get id
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -53,8 +51,7 @@ class Feature {
      * @param string $name
      * @return Feature
      */
-    public function setName($name)
-    {
+    public function setName($name) {
         $this->name = $name;
 
         return $this;
@@ -65,8 +62,7 @@ class Feature {
      *
      * @return string 
      */
-    public function getName()
-    {
+    public function getName() {
         return $this->name;
     }
 
@@ -76,8 +72,7 @@ class Feature {
      * @param string $description
      * @return Feature
      */
-    public function setDescription($description)
-    {
+    public function setDescription($description) {
         $this->description = $description;
 
         return $this;
@@ -88,8 +83,11 @@ class Feature {
      *
      * @return string 
      */
-    public function getDescription()
-    {
+    public function getDescription() {
         return $this->description;
+    }
+
+    public function __toString() {
+        return $this->name;
     }
 }

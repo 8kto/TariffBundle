@@ -22,8 +22,8 @@ $(function () {
 
     // Красивые селекты
     $('select').selectpicker({
-        style: 'btn-success btn-sm',
-        size: 5
+        style: 'btn-info',
+        size: 8
     });
     
     // Активировать выпадающие меню

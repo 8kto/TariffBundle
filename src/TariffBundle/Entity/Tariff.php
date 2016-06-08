@@ -37,7 +37,7 @@ class Tariff {
 
     /**
      * @ORM\OneToMany(targetEntity="FeatureConcrete", mappedBy="tariff", cascade={"remove", "persist"})
-     * @var FeatureConcrete
+     * @var ArrayCollection
      */
     private $features;
 
@@ -49,19 +49,15 @@ class Tariff {
     private $price;
 
     public function __construct() {
-        parent::__construct();
-
         $this->features = new ArrayCollection();
     }
-
 
     /**
      * Get id
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -71,8 +67,7 @@ class Tariff {
      * @param string $name
      * @return Tariff
      */
-    public function setName($name)
-    {
+    public function setName($name) {
         $this->name = $name;
 
         return $this;
@@ -83,8 +78,7 @@ class Tariff {
      *
      * @return string 
      */
-    public function getName()
-    {
+    public function getName() {
         return $this->name;
     }
 
@@ -94,8 +88,7 @@ class Tariff {
      * @param boolean $active
      * @return Tariff
      */
-    public function setActive($active)
-    {
+    public function setActive($active) {
         $this->active = $active;
 
         return $this;
@@ -106,8 +99,7 @@ class Tariff {
      *
      * @return boolean 
      */
-    public function getActive()
-    {
+    public function getActive() {
         return $this->active;
     }
 
@@ -117,8 +109,7 @@ class Tariff {
      * @param string $price
      * @return Tariff
      */
-    public function setPrice($price)
-    {
+    public function setPrice($price) {
         $this->price = $price;
 
         return $this;
@@ -129,20 +120,19 @@ class Tariff {
      *
      * @return string 
      */
-    public function getPrice()
-    {
+    public function getPrice() {
         return $this->price;
     }
 
     /**
      * Add features
      *
-     * @param \TariffBundle\Entity\FeatureConcrete $features
+     * @param \TariffBundle\Entity\FeatureConcrete $feature
      * @return Tariff
      */
-    public function addFeature(\TariffBundle\Entity\FeatureConcrete $features)
-    {
-        $this->features[] = $features;
+    public function addFeature(\TariffBundle\Entity\FeatureConcrete $feature) {
+        $this->features[] = $feature;
+        $feature->setTariff($this);
 
         return $this;
     }
@@ -152,8 +142,7 @@ class Tariff {
      *
      * @param \TariffBundle\Entity\FeatureConcrete $features
      */
-    public function removeFeature(\TariffBundle\Entity\FeatureConcrete $features)
-    {
+    public function removeFeature(\TariffBundle\Entity\FeatureConcrete $features) {
         $this->features->removeElement($features);
     }
 
@@ -162,8 +151,8 @@ class Tariff {
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getFeatures()
-    {
+    public function getFeatures() {
         return $this->features;
     }
+
 }

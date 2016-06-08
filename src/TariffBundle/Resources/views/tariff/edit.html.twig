@@ -1,0 +1,54 @@
+{% extends 'TariffBundle:Default:layout_inner.html.twig' %}
+{% block title %}Изменить Тариф{% endblock %}
+{% block pagetitle %}Изменить Тариф{% endblock %}
+
+
+{% 
+    set crumbs = [
+        {title: 'Список', path: 'tariff_index'}, 
+        {title: 'Изменить', current : true}
+    ]
+%}
+
+{% block body %}
+    {{ form_start(edit_form) }}
+
+    {{ form_row(edit_form.name) }}
+    {{ form_row(edit_form.price) }}
+    {{ form_row(edit_form.active) }}
+
+    <fieldset>
+        <legend>
+            Возможности <span class="badge"></span>
+            <a href="#" id="btn-add-feature" class="add_link btn btn-link btn-xs"><i class="icon icon-plus"></i></a>
+        </legend>
+
+        <div class="form-group">
+            <div class="features-list" data-prototype="{{ form_widget(edit_form.features.vars.prototype)|e('html_attr') }}">
+                {% for feature in edit_form.features %}
+                    <div class="row-fluid feature-row">
+                        <div class="span6">
+                            {{ form_row(feature.feature, {'label': false}) }}
+                        </div>
+                        <div class="span6">
+                            {{ form_row(feature.value, {'label': false}) }}
+                        </div>
+                    </div>
+                {% endfor %} 
+            </div>
+    </fieldset>
+
+    <input type="submit" value="Сохранить" class="btn btn-success" />
+
+    {{ form_end(edit_form) }}
+
+    {{ form_start(delete_form) }}
+    <input type="submit" value="Удалить" class="btn btn-danger" />
+    {{ form_end(delete_form) }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script src="{{ asset('bundles/tariff/js/edit-tariff-wrapper.js') }}"></script>
+{% endblock %}

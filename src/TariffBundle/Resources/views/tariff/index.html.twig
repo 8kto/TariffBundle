@@ -1,0 +1,51 @@
+{% extends 'TariffBundle:Default:layout_inner.html.twig' %}
+{% block title %}Тарифы{% endblock %}
+{% block pagetitle %}Тарифы{% endblock %}
+
+{% 
+    set crumbs = [
+        {title: 'Список', current: true}, 
+    ]
+%}
+
+{#================CONTENT=====================================================#}
+
+
+{% block body %}
+
+
+    <div class="well">
+        Тариф (тарифный план) с набором Возможностей.
+    </div>
+
+    <div class="btn-group">
+        <a class="btn btn-info" href="{{ path('tariff_new') }}">Добавить</a>
+    </div>
+    <table class="table table-striped table-hover ">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Название</th>
+                <th>Активный</th>
+                <th>Цена за год, $</th>
+                <th>Действия</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for tariff in tariffs %}
+                <tr>
+                    <td><a href="{{ path('tariff_show', { 'id': tariff.id }) }}">{{ tariff.id }}</a></td>
+                    <td>{{ tariff.name }}</td>
+                    <td>{% if tariff.active %}Да{% else %}Нет{% endif %}</td>
+                    <td>{{ tariff.price }}</td>
+                    <td>
+                        <a class="btn btn-xs btn-info" href="{{ path('tariff_show', { 'id': tariff.id }) }}">Подробно</a>
+                        <a class="btn btn-xs btn-info" href="{{ path('tariff_edit', { 'id': tariff.id }) }}">Изменить</a>
+                        <ul>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
