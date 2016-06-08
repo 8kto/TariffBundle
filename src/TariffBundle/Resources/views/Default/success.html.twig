@@ -1,0 +1,27 @@
+{% extends 'TariffBundle:Default:layout_inner.html.twig' %}
+{% block title %}Создать Тариф{% endblock %}
+{% block pagetitle %}Создать Тариф{% endblock %}
+
+
+{% 
+    set crumbs = [
+        {title: 'Список', path: 'tariff_index'}, 
+        {title: 'Новый', current : true}
+    ]
+%}
+
+{% block body %}
+
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <h3 class="panel-title">Заявка оформлена</h3>
+        </div>
+        <div class="panel-body">
+            <p>Вам выслано письмо с дальнейшими указаниями.
+                <br>
+                Спасибо за покупку!</p>
+
+            <a class="btn btn-info" href="{{ path('index') }}">На главную</a>
+        </div>
+    </div>
+{% endblock %}

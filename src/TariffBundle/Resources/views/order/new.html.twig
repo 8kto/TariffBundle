@@ -1,0 +1,68 @@
+{% extends 'TariffBundle:Default:layout_inner.html.twig' %}
+{% block title %}Новая заявка{% endblock %}
+{% block pagetitle %}Заявка на тариф «{{ tariff.name }}»{% endblock %}
+
+
+{% 
+    set crumbs = [
+        {title: 'Главная', path: 'index'}, 
+        {title: 'Форма заказа', current : true}
+    ]
+%}
+
+{% block body %}
+    <div class="row-fluid">
+        <div class="span6">
+            {{ form_start(form) }}
+
+            {% do form.tariff.setRendered %}
+
+            <fieldset>
+                <legend>
+                    Возможности
+                </legend>
+                <div class="form-group">
+                    <div class="features-list">
+                        {% for feature in tariff.features %}
+                            <div class="row-fluid feature-row">
+                                <div class="span6">
+                                    {{ feature.feature.name }}
+                                </div>
+                                <div class="span6">
+                                    {{ feature.value }}
+                                </div>
+                            </div>
+                        {% endfor %} 
+                    </div>
+            </fieldset>
+            <div class="alert alert-dismissible alert-info">
+                Цена: ${{ tariff.price }}
+            </div>
+
+            <input type="submit" value="Оплатить" class="btn btn-success" />
+
+            {{ form_end(form) }}
+        </div>
+
+        <div class="span6">
+
+            <h3>Виртуальный хостинг</h3>
+            <p>Виртуальный хостинг - это размещение вашего веб-сайта на оборудовании, постоянно подключенном к сети Интернет 
+                высокоскоростными каналами связи. Эта услуга обеспечивает доступ к вашему веб-сайту в любое время из любой точки 
+                мира по адресу, который был вами ранее зарегистрирован. Покупая услугу виртуального хостинга, 
+                вы перекладываете на хостинг-провайдера заботы по круглосуточной поддержке дорогостоящего серверного оборудования, 
+                настройке программного обеспечения, его регулярному обновлению, а также обеспечению постоянного соединения 
+                с Интернет. </p>
+
+            <p>Компания Megaservers выполняет все необходимые функции по обеспечению круглосуточного, 
+                бесперебойного доступа к вашему веб-сайту и производит резервное копирование ваших данных.</p>
+
+            <p>Наша компания использует в работе самое современное оборудование:</p>
+            <ul>
+                <li>высоконадежные и отказоустойчивые серверы производства Hewlett-Packard последнего поколения.</li>
+                <li>пушистые коннекторы.</li>
+                <li>аппаратные файрволы производства CISCO.</li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}

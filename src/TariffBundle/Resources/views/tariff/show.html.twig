@@ -24,6 +24,10 @@
                 <td>{{ tariff.name }}</td>
             </tr>
             <tr>
+                <th>Описание</th>
+                <td>{{ tariff.description }}</td>
+            </tr>
+            <tr>
                 <th>Активный</th>
                 <td>{% if tariff.active %}Да{% else %}Нет{% endif %}</td>
             </tr>

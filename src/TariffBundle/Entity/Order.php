@@ -6,10 +6,10 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Заказ на тарифный план клиента.
+ * Заказ на тарифный план.
  * 
  * @ORM\Entity
- * @ORM\Table(name="order")
+ * @ORM\Table(name="orders")
  */
 class Order {
 

@@ -1,0 +1,56 @@
+{% extends 'TariffBundle:Default:layout_inner.html.twig' %}
+{% block title %}Подробно{% endblock %}
+{% block pagetitle %}Подробно{% endblock %}
+
+{% 
+    set crumbs = [
+        {title: 'Список', path: 'order_index'}, 
+        {title: 'Заказ', current : true}
+    ]
+%}
+
+{#================CONTENT=====================================================#}
+
+{% block body %}
+    <table class="table table-striped table-hover ">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ order.id }}</td>
+            </tr>
+            <tr>
+                <th>Клиент</th>
+                <td>{{ order.user }}</td>
+            </tr>
+            <tr>
+                <th>Оплачено</th>
+                <td>{% if order.paid %}Да{% else %}Нет{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Начало периода</th>
+                <td>{% if order.startDate %}{{ order.startDate|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Окончание периода</th>
+                <td>{% if order.endDate %}{{ order.endDate|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Тариф: {{ order.tariff.name }}</th>
+                <td>
+                    {% for feature in order.tariff.features %}
+                        <div class="row-fluid feature-row">
+                            <div class="span6">
+                                {{ feature.feature.name }}
+                            </div>
+                            <div class="span6">
+                                {{ feature.value }}
+                            </div>
+                        </div>
+                    {% endfor %} 
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+{% endblock %}

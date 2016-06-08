@@ -30,6 +30,13 @@ class Tariff {
     private $name;
 
     /**
+     * @ORM\Column(type="string", length=1024)
+     * @Assert\NotBlank()
+     * @var str
+     */
+    private $description;
+
+    /**
      * @ORM\Column(type="boolean", nullable=true, options={"default":true})
      * @var bool
      */
@@ -153,6 +160,31 @@ class Tariff {
      */
     public function getFeatures() {
         return $this->features;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return Tariff
+     */
+    public function setDescription($description) {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string 
+     */
+    public function getDescription() {
+        return $this->description;
+    }
+
+    public function __toString() {
+        return $this->name;
     }
 
 }

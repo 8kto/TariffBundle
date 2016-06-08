@@ -19,24 +19,13 @@
 {% import _self as tpl %}
 
 {% block header_nav %}
-    <nav class="navbar navbar-default" id="header-nav">
+    <nav class="navbar navbar-default navbar-fixed-top" id="header-nav">
         <div class="container-fluid">
             <div class="navbar-header">
                 <a class="navbar-brand" href="{{ path("index") }}">{{ webapp_title }}</a>
             </div>
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    {#                    <li class="{{- tpl.is_current_route('tasks_done') -}}">
-                                            <a href="{{ path("tasks_done") }}">Выполненные</a>
-                                        </li>
-                                        <li class="{{- tpl.is_current_route('tasks_closed') -}}">
-                                            <a href="{{ path("tasks_closed") }}">Неактивные</a>
-                                        </li>
-                                        <li class="{{- tpl.is_current_route('add_task') -}}">
-                                            <a href="{{ path("add_task") }}"><i class="icon-plus"></i></a>
-                                        </li>#}
-                </ul>
 
                 <form class="navbar-form navbar-left" role="search">
                     <div class="form-group">
@@ -45,11 +34,38 @@
                     <button type="submit" class="btn btn-success">GO</button>
                 </form>
 
+
+                {% if is_granted("ROLE_ADMIN") %}
+                    {#<li class="list-group-item"><a href="{{ path("feature_index") }}">Возможности</a></li>
+                    <li class="list-group-item"><a href="{{ path("tariff_index")}}">Тарифы</a></li>
+                    <li class="list-group-item"><a href="{{ path("order_index")}}">Заказы</a></li>#}
+
+                    <ul class="nav navbar-nav">
+                        <li class="{{- tpl.is_current_route('feature_index') -}}">
+                            <a href="{{ path("feature_index") }}">Возможности</a>
+                        </li>
+                        <li class="{{- tpl.is_current_route('tariff_index') -}}">
+                            <a href="{{ path("tariff_index")}}">Тарифы</a>
+                        </li>
+
+                        <li class="{{- tpl.is_current_route('order_index') -}}">
+                            <a href="{{ path("order_index")}}">Заказы</a>
+                        </li>
+
+                        <li class="{{- tpl.is_current_route('tariff_new') -}}">
+                            <a href="{{ path("tariff_new") }}"><i class="icon-plus"></i></a>
+                        </li>
+                    </ul>
+                {% endif %}
+
                 <ul class="nav navbar-nav navbar-right">
-                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                    {% if app.user and is_granted("IS_AUTHENTICATED_FULLY") %}
                         <li><a href="{{ path("fos_user_profile_show") }}"><strong>{{ app.user.username }}</strong></a></li>
-                                {% endif %}
-                    <li><a href="{{ logout_path() }}">Выйти</a></li>
+                        <li><a href="{{ logout_path() }}">Выйти</a></li>
+                        {% else %}
+                        <li><a href="{{ path("fos_user_security_login") }}">Войти</a></li>
+                        <li><a href="{{ path("fos_user_registration_register") }}">Регистрация</a></li>
+                        {% endif %}
                 </ul>
             </div>
         </div>
@@ -60,28 +76,13 @@
 {# Навигация #}
 {% block sidebar_nav %}
     <ul class="list-group">
-
         {% if is_granted("ROLE_ADMIN") %}
-            <li class="list-group-item">
-                {#<span class="badge" title="Сегодня">
-                    <i class="icon icon-coffee"></i>
-                </span>    #}
-                <a href="{{ path("feature_index") }}">Возможности</a>
-            </li>
+            <li class="list-group-item"><a href="{{ path("feature_index") }}">Возможности</a></li>
             <li class="list-group-item"><a href="{{ path("tariff_index")}}">Тарифы</a></li>
-            <li class="list-group-item"><a href="#">Пользователи</a></li>
+            <li class="list-group-item"><a href="{{ path("order_index")}}">Заказы</a></li>
             {% endif %}
     </ul>
 
-    {#    <h4><a href="{{ path("list_categories") }}">Категории</a></h4>#}
-    <div class="list-group">
-
-        {#{% for category in app.user.categories %}
-            <a href="#" class="list-group-item">{{ category.name }}</a>
-        {% endfor %}#}
-
-
-    </div>
 {% endblock %}
 {# /Навигация #}
 

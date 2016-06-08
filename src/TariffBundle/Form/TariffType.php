@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class TariffType extends AbstractType {
 
@@ -17,6 +18,10 @@ class TariffType extends AbstractType {
         $builder
                 ->add('name', null, [
                     'label' => 'Название'
+                ])
+                ->add('description', TextareaType::class, [
+                    'attr'  => array('class' => 'tinymce'),
+                    'label' => 'Описание'
                 ])
                 ->add('active', null, [
                     'label' => 'Активный'

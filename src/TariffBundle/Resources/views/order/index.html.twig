@@ -1,0 +1,58 @@
+{% extends 'TariffBundle:Default:layout_inner.html.twig' %}
+{% block title %}Заказы{% endblock %}
+{% block pagetitle %}Заказы{% endblock %}
+
+{% 
+    set crumbs = [
+        {title: 'Список', current: true}, 
+    ]
+%}
+
+{#================CONTENT=====================================================#}
+
+
+{% block body %}
+
+    <div class="well">
+        Заказы клиентов
+    </div>
+
+    {% if orders is not empty %}    
+        <table class="table table-striped table-hover ">
+
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Тариф</th>
+                    <th>Клиент</th>
+                    <th>Оплачено</th>
+                    <th>Начало периода</th>
+                    <th>Окончание</th>
+                    <th>Действия</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for order in orders %}
+                    <tr>
+                        <td><a href="{{ path('order_show', { 'id': order.id }) }}">{{ order.id }}</a></td>
+                        <td>{{ order.tariff }}</td>
+                        <td>{{ order.user }}</td>
+                        <td>{% if order.paid %}Да{% else %}Нет{% endif %}</td>
+                        <td>{% if order.startDate %}{{ order.startDate|date('Y-m-d') }}{% endif %}</td>
+                        <td>{% if order.endDate %}{{ order.endDate|date('Y-m-d') }}{% endif %}</td>
+                        <td>
+                            <a class="btn btn-xs btn-info" href="{{ path('order_show', { 'id': order.id }) }}">Подробнее</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    {% else %}
+        <div class="alert alert-info">
+            Нет заказов
+        </div>
+    {% endif %}
+
+
+{% endblock %}

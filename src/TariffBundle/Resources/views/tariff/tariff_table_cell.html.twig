@@ -1,0 +1,26 @@
+
+<td class="tariff-description">
+
+    <strong>{{ tariff.name}}</strong>
+    <p>{{ tariff.description }}</p>
+
+</td>
+<td class="tariff-features-cell">
+    <ul class="features-list">
+        {% for feature in tariff.features %}
+            <div class="row-fluid feature-row">
+                <div class="span6">
+                    {{ feature.feature.name }}
+                </div>
+                <div class="span6">
+                    {{ feature.value }}
+                </div>
+            </div>
+        {% endfor %} 
+    </ul>
+
+</td>
+<td class="tariff-price">
+    <p>${{ tariff.price}}</p>
+    <a class="btn btn-info" href="{{ path('make_order', { 'id': tariff.id }) }}">Заказать!</a>
+</td>

@@ -1,0 +1,41 @@
+{# Опции шаблона #}
+{% if show_menu is not defined %}
+    {% set show_menu = false %}
+{% endif %}
+
+{# Ширина ячеек для иконок #}
+{% if not show_menu %}
+    {% set icon_ct_width = 6 %}
+{% else %}
+    {% set icon_ct_width = 4 %}
+{% endif %}
+
+<div class="task-single">
+    <div class="row-fluid">
+
+        <div class="span10 task-description">
+
+            <p>{{ tariff.name}}</p>
+{#            <p>{{ tariff.description }}</p>#}
+
+        </div>
+        <div class="span2 task-icons-ct">
+            <div class="row-fluid">
+
+
+                {% if show_menu %}
+                    <div class="dropdown span{{ icon_ct_width }}">
+                        <button class="btn btn-link dropdown-toggle btn-xs" type="button" id="dropdownMenu{{ tariff.id }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            <span class="icon icon-menu"></span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu{{ tariff.id }}">
+                            <li><a href="#">Редактировать</a></li>
+                            <li><a href="#">Неактивный</a></li>
+                        </ul>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -30,23 +30,23 @@
 
     <body>
         <div class="page-container">
-        <!--Навигация в шапке-->
+            <!--Навигация в шапке-->
         {% block header_nav %}{% endblock %}
         <!--/Навигация в шапке-->
 
         <div class="container-fluid">
             <div class="row-fluid">
-                <div class="span2">
+                {#<div class="span1">
 
-                <!--Навигация-->
+                    <!--Навигация-->
                 {% block sidebar_nav %}{% endblock %}
                 <!--/Навигация-->
 
-            </div><!--/span-->
+            </div><!--/span-->#}
 
-            <div class="span10">
-                <h2>{% block pagetitle %}{% endblock %}</h2>
-            <!-- Хлебные крошки -->
+            <div class="span12">
+                <h2 class="page-header">{% block pagetitle %}{% endblock %}</h2>
+                <!-- Хлебные крошки -->
             {% block breadcrumbs %}{% endblock %}
             <!-- /Хлебные крошки -->
 
@@ -70,12 +70,16 @@
 
     </div><!--/span-->
 
+    {#<div class="span1">
+
+    </div><!--/span-->#}
+
 </div><!--/row-->
 </div><!--/.fluid-container-->
 
 <hr>
 
-<footer>
+<footer class="navbar-fixed-bottom">
     <p>&copy; 2016 {{ webapp_name }}</p>
 </footer>
 
