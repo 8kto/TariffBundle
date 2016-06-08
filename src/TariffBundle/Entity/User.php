@@ -20,10 +20,10 @@ class User extends BaseUser {
     protected $id;
 
     /**
-     * @ ORM\OneToMany(targetEntity="Category", mappedBy="user", cascade={"remove"})
+     * @ORM\OneToMany(targetEntity="Order", mappedBy="user", cascade={"remove"})
      */
-//    private $categories;
-     
+    private $orders;
+
     /**
      * @ORM\Column(type="string", nullable=true, options={"default":"UTC"})
      * @var string
@@ -33,9 +33,7 @@ class User extends BaseUser {
     public function __construct() {
         parent::__construct();
 
-//        $this->categories = new ArrayCollection();
-//        $this->history    = new ArrayCollection();
-//        $this->cron       = new ArrayCollection();
+        $this->orders = new ArrayCollection();
     }
 
     /**
@@ -45,8 +43,7 @@ class User extends BaseUser {
      *
      * @return User
      */
-    public function setTimezone($timezone)
-    {
+    public function setTimezone($timezone) {
         $this->timezone = $timezone;
 
         return $this;
@@ -57,8 +54,41 @@ class User extends BaseUser {
      *
      * @return string
      */
-    public function getTimezone()
-    {
+    public function getTimezone() {
         return $this->timezone;
+    }
+
+
+    /**
+     * Add orders
+     *
+     * @param \TariffBundle\Entity\Order $orders
+     * @return User
+     */
+    public function addOrder(\TariffBundle\Entity\Order $orders)
+    {
+        $this->orders[] = $orders;
+
+        return $this;
+    }
+
+    /**
+     * Remove orders
+     *
+     * @param \TariffBundle\Entity\Order $orders
+     */
+    public function removeOrder(\TariffBundle\Entity\Order $orders)
+    {
+        $this->orders->removeElement($orders);
+    }
+
+    /**
+     * Get orders
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getOrders()
+    {
+        return $this->orders;
     }
 }
