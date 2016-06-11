@@ -1,6 +1,6 @@
 <?php
 
-namespace Okto\CzrTaskBundle\Form\Type;
+namespace TariffBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -10,27 +10,22 @@ use Symfony\Component\Form\FormBuilderInterface;
  *
  * @author Okto <web@axisful.info>
  */
-class ProfileFormType extends AbstractType
-{
+class ProfileFormType extends AbstractType {
 
-    public function buildForm(FormBuilderInterface $builder, array $options)
-    {
+    public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder->add('timezone');
     }
 
-    public function getParent()
-    {
+    public function getParent() {
         return 'FOS\UserBundle\Form\Type\ProfileFormType';
     }
 
-    public function getBlockPrefix()
-    {
+    public function getBlockPrefix() {
         return 'app_user_profile';
     }
 
     // For Symfony 2.x
-    public function getName()
-    {
+    public function getName() {
         return $this->getBlockPrefix();
     }
 

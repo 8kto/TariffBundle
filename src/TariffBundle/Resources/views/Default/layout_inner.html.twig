@@ -36,10 +36,6 @@
 
 
                 {% if is_granted("ROLE_ADMIN") %}
-                    {#<li class="list-group-item"><a href="{{ path("feature_index") }}">Возможности</a></li>
-                    <li class="list-group-item"><a href="{{ path("tariff_index")}}">Тарифы</a></li>
-                    <li class="list-group-item"><a href="{{ path("order_index")}}">Заказы</a></li>#}
-
                     <ul class="nav navbar-nav">
                         <li class="{{- tpl.is_current_route('feature_index') -}}">
                             <a href="{{ path("feature_index") }}">Возможности</a>
@@ -59,7 +55,7 @@
                 {% endif %}
 
                 <ul class="nav navbar-nav navbar-right">
-                    {% if app.user and is_granted("IS_AUTHENTICATED_FULLY") %}
+                    {% if is_granted("IS_AUTHENTICATED_FULLY") %}
                         <li><a href="{{ path("fos_user_profile_show") }}"><strong>{{ app.user.username }}</strong></a></li>
                         <li><a href="{{ logout_path() }}">Выйти</a></li>
                         {% else %}

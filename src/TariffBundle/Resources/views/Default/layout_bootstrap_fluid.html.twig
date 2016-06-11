@@ -4,18 +4,18 @@
         <meta charset="utf-8">
         <title>{% block title %}{% endblock %} — {{ webapp_name }}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="author" content="Okto">
+        <meta name="author" content="Igor Okto">
 
         <!-- Le styles -->
         {% block stylesheets %}
             <link href="{{ asset('bundles/tariff/external/bootstrap/bootstrap-cosmo.min.css') }}" rel="stylesheet" />
-            <style>
-                footer{text-align: center}
-            </style>
             <link href="{{ asset('bundles/tariff/external/bootstrap/bootstrap-responsive.css') }}" rel="stylesheet" />
             <link href="{{ asset('bundles/tariff/external/fontello/css/font-awesome-custom.css') }}" rel="stylesheet" />
         {% endblock %}
         <!-- Unoverrridable -->
+        <style>
+            footer{text-align: center}
+        </style>
         <link href="{{ asset('bundles/tariff/css/styles.css') }}" rel="stylesheet" />
 
 
@@ -44,37 +44,37 @@
 
             </div><!--/span-->#}
 
-            <div class="span12">
-                <h2 class="page-header">{% block pagetitle %}{% endblock %}</h2>
-                <!-- Хлебные крошки -->
-            {% block breadcrumbs %}{% endblock %}
-            <!-- /Хлебные крошки -->
+                <div class="span12">
+                    <h2 class="page-header">{% block pagetitle %}{% endblock %}</h2>
+                    <!-- Хлебные крошки -->
+                {% block breadcrumbs %}{% endblock %}
+                <!-- /Хлебные крошки -->
 
-            <!-- Сообщения -->
-            {% if app.session.flashBag|length %}
+                <!-- Сообщения -->
+                {% if app.session.flashBag|length %}
 
-                {% for key in app.session.flashBag.keys() %}
-                    {% for msg in app.session.flashBag.get(key) %}
-                        <div class="alert alert-dismissible alert-{{ key == 'error'? 'danger' : key }}">
-                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    {% for key in app.session.flashBag.keys() %}
+                        {% for msg in app.session.flashBag.get(key) %}
+                            <div class="alert alert-dismissible alert-{{ key == 'error'? 'danger' : key }}">
+                                <button type="button" class="close" data-dismiss="alert">&times;</button>
 
-                            {{ msg }}
-                        </div>
+                                {{ msg }}
+                            </div>
+                        {% endfor %}
                     {% endfor %}
-                {% endfor %}
 
-            {% endif %}
-            <!-- /Сообщения -->
+                {% endif %}
+                <!-- /Сообщения -->
 
-        {% block body %}{% endblock %}
+            {% block body %}{% endblock %}
 
-    </div><!--/span-->
+        </div><!--/span-->
 
-    {#<div class="span1">
+        {#<div class="span1">
+    
+        </div><!--/span-->#}
 
-    </div><!--/span-->#}
-
-</div><!--/row-->
+    </div><!--/row-->
 </div><!--/.fluid-container-->
 
 <hr>
