@@ -69,3 +69,4 @@
 /web/css/
 /web/js//
 !/src/TariffBundle/Resources/public/external/
+/src/TariffBundle/Resources/public/external/montrezorro/
