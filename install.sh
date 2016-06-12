@@ -6,6 +6,9 @@ composer install
 
 cd $EXTERNAL_LIB_PATH
 git clone git://github.com/montrezorro/bootstrap-radio.git montrezorro/bootstrap-radio/
-git clone git://github.com/montrezorro/bootstrap-select.git montrezorro/bootstrap-select/
-npm install
+git clone git://github.com/montrezorro/bootstrap-checkbox.git montrezorro/bootstrap-checkbox/
+npm instal
+
+cd -
+php app/console assets:install
 
