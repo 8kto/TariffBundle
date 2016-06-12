@@ -1,0 +1,16 @@
+{
+    "name": "external",
+    "version": "1.0.0",
+    "description": "External libs",
+    "main": "index.js",
+    "dependencies": {
+        "bootstrap-select": "^1.10.0",
+        "grunt": "^0.4.5"
+    },
+    "devDependencies": {},
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Okto",
+    "license": "ISC"
+}
